@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactformulier</title>
+</head>
+<style>
+  table {
+      border-spacing: 0px;
+      border-collapse: separate;
+  }
+
+  tabel, td {
+      border:solid 1pt black;
+  }
+  th {
+      font-weight: bold;
+      border: solid 1pt black;
+      background-color:lightgray;
+  }
+</style>
+<body>
+  
+  <H1> Contactformulier </H1>
+  <img src="C:\Users\User\OneDrive\HTML_lessen\Madelefje.JPG"> 
+  
+    <h2>Kwekerij Bellis Perennis</h2>
+    <p>
+    Kerkstraat5 <br>
+    1234 AB Tietjekstradeel
+  </p>
+  <p>
+   <b>Telefoon:</b>3048332978 <br>
+   <b>Email:</b>info@bellisperannis.nl <br> 
+   <b>KvK:</b>38748332 
+  </p>
+   <hr>
+   <p>
+     Als u in contact wilt komen met Bellis Perrennis,gebruikt dan onderstaand formulier (<b>vetgedrukte velden <I>moeten</I></b> ingevuld worden). Of gebruik bovenstande gegevens.
+   </p>
+<form method="POST" action="https://www.w3schools.com/action_page_post.php">
+<fieldset>
+  <legend>Vul hier uw vraag in</legend>
+  <ol>
+    <Li>
+      <label for="txtNaam">
+        <strong>Naam</strong><br>
+        <input type="text" id="txtNaam">
+    </label>
+   </li>
+
+    <li>
+      <label for="txtTelefoonnummer"> Telefoon <br>
+        <input type="text" id="txtTelefoonnummer">
+      </label>
+    </li>
+
+    <li>
+      <label for="txtEmailadres">E-mailadres <br>
+        <input type="text" id="txtEmailadres">
+      </label>
+    </li>
+
+    <li>
+      <label for="txtBericht"><strong> Bericht</strong> <br>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+      </label>
+    </li>
+      
+  </ol>
+</fieldset>
+<br>
+<input type="submit" value="Verzenden">
+</form>
+
+<hr />
+<h1>Factuur</h1>
+<p>
+   <table>
+        <tr>
+            <th style="width:75px;">Aantal</th>
+            <th style="width:175px;">Omschrijving</th>
+            <th style="width:75px;">
+                Prijs<br />
+                per stuk
+            </th>
+            <th style="width:75px;">Prijs</th>
+        </tr>
+       <tr>
+           <td id="td_11">5</td>
+           <td>Madeliefjes</td>
+           <td id="td_13">1,29</td>
+           <td id="td_14"></td>
+       </tr>
+       <tr>
+           <td id="td_21">10</td>
+           <td>Margrieten</td>
+           <td id="td_23">1,49</td>
+           <td id="td_24"></td>
+       </tr>
+       <tr>
+           <td id="td_31">7</td>
+           <td>Klaprozen</td>
+           <td id="td_33">0,99</td>
+           <td id="td_34"></td>
+       </tr>
+       <tr>
+           <td colspan="2">Subtotaal</td>
+           <td></td>
+           <td id="td_44"></td>
+       </tr>
+       <tr>
+           <td colspan="2">BTW</td>
+           <td></td>
+           <td id="td_54"></td>
+       </tr>
+       <tr>
+        <td colspan="2">Totaal</td>
+        <td></td>
+        <td id="td_64"></td>
+</tr>
+   </table>
+</p>
+<p>
+    <input type="button" value="Optellen" onclick="Optellen();" />
+</p>
+
+<script type="text/javascript">
+    function Optellen() {
+        var regeltotaal;
+        var subtotaal;
+        var btw;
+        var totaal;
+
+        regeltotaal = document.getElementById('td_11').innerHTML.replace(",", ".") * document.getElementById('td_13').innerHTML.replace(",", "."); //replace vervangt de decimale komma door een punt zodat er berekeningen mee gedaan kunnen worden
+        document.getElementById('td_14').innerHTML = regeltotaal.toFixed(2).replace(".", ","); //toFixed zet het aantal decimalen op 2, replace maakt weer een decimale komma
+        subtotaal = regeltotaal;
+
+        regeltotaal = document.getElementById('td_21').innerHTML.replace(",", ".") * document.getElementById('td_23').innerHTML.replace(",", ".");
+        document.getElementById('td_24').innerHTML = regeltotaal.toFixed(2).replace(".", ",");
+        subtotaal += regeltotaal; //+= zorgt er voor dat de waarde erbij komt i.p.v. dat wat er al stond overschreven wordt
+
+
+        regeltotaal = document.getElementById('td_31').innerHTML.replace(",", ".") * document.getElementById('td_33').innerHTML.replace(",", ".");
+        document.getElementById('td_34').innerHTML = regeltotaal.toFixed(2).replace(".", ",");
+        subtotaal += regeltotaal; //+= zorgt er voor dat de waarde erbij komt i.p.v. dat wat er al stond overschreven wordt
+
+
+        document.getElementById('td_44').innerHTML = subtotaal.toFixed(2).replace(".", ",");
+        btw = (subtotaal / 100) * 21;
+        document.getElementById('td_54').innerHTML = btw.toFixed(2).replace(".", ",");
+        totaal = subtotaal + btw;
+        document.getElementById('td_64').innerHTML = totaal.toFixed(2).replace(".", ",");
+    }
+</script>
+
+</body>
+</html>
